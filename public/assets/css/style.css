@@ -1,0 +1,13 @@
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled,
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover,
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
+    cursor: default;
+    border: 1px solid transparent;
+    background: #2270ae;
+    box-shadow: none;
+    color: aliceblue;
+}
+
+.text-right {
+    text-align: right;
+}

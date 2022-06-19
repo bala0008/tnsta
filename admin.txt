@@ -1,0 +1,203 @@
+<?php
+class AdminController extends Controller
+{
+  public function __construct()
+  {
+    //new model instance
+    $this->users = $this->model('Users');
+    $this->whatsnew_model = $this->model('WhatsNew_Model');
+  }
+
+  public function index()
+  {
+    $this->view('admin/dashboard');
+  }
+  public function form()
+  {
+    $this->view('admin/edit-menu');
+  }
+  public function adminlogin()
+  {
+    $this->view('admin/adminlogin');
+  }
+
+  public function login()
+  {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+      // process form
+      $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+      $data = [
+        'user_name' => trim($_POST['user_name']),
+        'user_password' => trim($_POST['user_password'])
+      ];
+
+      if ($this->users->findUserByUserName($data['user_name'])) {
+        //user found..
+
+      } else {
+        $response = ' <strong>User Name Not Found !!!</strong>';
+        $message = 1;
+        header('Content-Type: application/json');
+        echo json_encode(array("message" => $message, "response" => $response));
+        exit;
+      }
+      $data['user_password'] = md5($data['user_password']);
+
+      $loggedInUser = $this->users->login($data['user_name'], $data['user_password']);
+      if ($loggedInUser) {
+        //create session
+        $this->createUserSession($loggedInUser);
+        // echo 0;
+        $response = '<strong>Login Success</strong>';
+        $message = 0;
+        header('Content-Type: application/json');
+        echo json_encode(array("message" => $message, "response" => $response));
+        exit;
+      } else {
+        $response = ' <strong>Password Is Wrong</strong>
+';
+        $message = 2;
+        header('Content-Type: application/json');
+        echo json_encode(array("message" => $message, "response" => $response));
+        exit;
+      }
+    }
+  }
+  public function createUserSession($user)
+  {
+    $_SESSION['userid'] = $user->userid;
+    $_SESSION['username'] = $user->username;
+    $_SESSION['useremail'] = $user->useremail;
+    $_SESSION['rolename'] = $user->rolename;
+    $_SESSION['roleid'] = $user->roleid;
+
+    // redirect('Indexes/index');
+  }
+  public function whatsnew()
+  {
+    $this->view('admin/edit_whatsnew');
+  }
+  public function logout()
+  {
+    session_destroy();
+    redirect('Indexes/index');
+  }
+
+
+  public function whatsnew_edit()
+  {
+    $id = $_REQUEST['id'];
+    $sql = $this->userModel->edit($id);
+    $data['sql'] = $sql;
+    $this->view('index', $data);
+  }
+  public function whatsnew_save()
+  {
+    print_r($_POST);
+    die;
+    $final_file = null;
+    if (isset($_FILES['wh_new_pdf']['name'])) {
+      $file = rand(1000, 100000) . "-" . $_FILES['wh_new_pdf']['name'];
+      $file_loc = $_FILES['wh_new_pdf']['tmp_name'];
+      $file_size = $_FILES['wh_new_pdf']['size'];
+      $file_type = $_FILES['wh_new_pdf']['type'];
+      $folder = 'whatsnew/';
+      $new_size = $file_size / 2000000;
+      /* make file name in lower case */
+      $new_file_name = strtolower($file);
+      /* make file name in lower case */
+      $final_file = str_replace(' ', '-', $new_file_name);
+
+      // echo "<pre>";
+      // print_r($final_file);
+      // die();
+      if (move_uploaded_file($file_loc, $folder . $final_file)) {
+      } else {
+        echo "File size greater than 300kb!\n\n";
+      }
+    }
+
+    $wh_new_from_date = date('Y-m-d', strtotime($_POST['wh_new_from_date']));
+    $wh_new_to_date =  date('Y-m-d', strtotime($_POST['wh_new_to_date']));
+    $data = [
+      'en_whatsnew_title' => trim($_POST['en_whatsnew_title']),
+      'tn_whatsnew_title' => trim($_POST['tn_whatsnew_title']),
+      'wh_new_from_date' => $wh_new_from_date,
+      'wh_new_to_date' =>  $wh_new_to_date,
+      'whatsnew_id' => $_POST['id'],
+      'action' => $_POST['action'],
+      'wh_new_pdf' => $final_file
+    ];
+    if ($final_file) {
+      $data['wh_new_pdf'] = $final_file;
+    }
+    $data['created_by'] = $_SESSION['userid'];
+    $data['created_on'] = date('Y-m-d H:i:s');
+    $data['updated_by'] = $_SESSION['userid'];
+    $data['updated_on'] = date('Y-m-d H:i:s');
+    $data['status'] = '0';
+
+    if ($data['action'] == "new") {
+      if ($this->whatsnew_model->editdWhatsNew($data)) {
+        echo "trueqqq";
+      }
+    } else {
+      if ($this->whatsnew_model->updatedWhatsNew($data)) {
+        echo "update";
+      } else {
+        echo "not????";
+      }
+    }
+  }
+  public function list_whatsnew()
+  {
+
+    $status = isset($_REQUEST['status']) ? $_REQUEST['status'] : 0;
+    if ($status == null  || $status == 0) {
+      $status = '0';
+      $whatsnew = $this->whatsnew_model->getWhatsNewUnpublished($status);
+    } else {
+      $status = '1';
+      $whatsnew = $this->whatsnew_model->getWhatsNewPublished($status);
+    }
+
+    $data['current_whatsnew'] = $whatsnew;
+    $this->view('admin/list-whatsnew', $data);
+  }
+  public function whatsnew_edit_id()
+  {
+
+    $id = $_REQUEST['id'];
+    $sql = $this->whatsnew_model->edit($id);
+    $data['sql'] = $sql;
+    $this->view('admin/edit_whatsnew', $data);
+    // $this->view('index', $data);
+  }
+  public function whatsnew_delete()
+  {
+    $data = [
+      'whatsnew_id' => $_REQUEST['whatsnew_id'],
+      'status' => 2
+    ];
+    $data['deleted_by'] = $_SESSION['userid'];
+    $data['deleted_on'] = date('Y-m-d H:i:s');
+
+    if ($this->whatsnew_model->deletedWhatsNew($data)) {
+      $message = 1;
+      header('Content-Type: application/json');
+      echo json_encode(array("message" => $message));
+    }
+  }
+  public function whatsnew_publish()
+  {
+    $data = [
+      'whatsnew_id' => $_REQUEST['whatsnew_id'],
+      'status' => 1
+    ];
+    if ($this->whatsnew_model->publishWhatsNew($data)) {
+      $message = 1;
+      header('Content-Type: application/json');
+      echo json_encode(array("message" => $message));
+    }
+  }
+}

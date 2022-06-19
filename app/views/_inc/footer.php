@@ -10,7 +10,6 @@
             margin-top: calc(19% - 135px);
         }
     }
-
     @media (max-width: 600px) {
         .footer-bg {
             background: #07414f;
@@ -24,7 +23,6 @@
             margin-top: calc(19% - 60px);
         }
     }
-
     @media (max-width: 1199px) {
         .footer-bg {
             background: #07414f;
@@ -32,7 +30,6 @@
         }
     }
 </style>
-
 <!-- Remove the container if you want to extend the Footer to full width. -->
 <div class="container-fluid p-0 m-0">
 

@@ -3,14 +3,12 @@
         background: #07414f;
         margin-top: calc(19% - 255px);
     }
-
     @media (max-width: 767px) {
         .footer-bg {
             background: #07414f;
             margin-top: calc(19% - 135px);
         }
     }
-
     @media (max-width: 600px) {
         .footer-bg {
             background: #07414f;

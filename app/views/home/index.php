@@ -8,6 +8,96 @@
 <link rel="stylesheet" href="datatable/css/custom.css">
 <link rel="stylesheet" href="datatable/css/jquery.dataTables.min.css">
 <style>
+    .sub-division .container {
+        margin-top: 20px;
+        padding: 40px 20px;
+    }
+
+    /* .sub-division .box {
+        padding: 40px 30px;
+        transition: all .4s ease-in-out;
+        cursor: pointer;
+    } */
+    .sub-division .box {
+        padding: 20px 20px;
+        transition: all .4s ease-in-out;
+        cursor: pointer;
+    }
+
+    .sub-division .box:hover {
+        box-shadow: 2px 2px 10px #a5a5a5;
+        transform: scale(1.03);
+    }
+
+    .sub-division a:hover {
+        text-decoration: none;
+    }
+
+    .sub-division img {
+        object-fit: contain;
+        width: 35px;
+        height: 35px;
+        /* padding: 20px; */
+    }
+
+    .sub-division p.text-muted {
+        margin: 0;
+        font-size: 0.9rem;
+    }
+
+    /* .sub-division b {
+        font-size: 1.12rem;
+    } */
+
+    .sub-division b {
+        font-size: 1.25rem;
+        font-weight: bold;
+        color: #004757;
+    }
+
+    .sub-division.rounded-circle {
+        width: 60px;
+        height: 60px;
+        background-color: red;
+    }
+
+    .sub-division .blue {
+        background-color: #bedcfa;
+        /* transform: rotate(90deg); */
+    }
+
+    .sub-division .pale-blue {
+        background-color: #eff8ff;
+    }
+
+    .sub-division .pale-orange {
+        background-color: #ffe5b9;
+    }
+
+    .sub-division .pale-purple {
+        background-color: #e8e8e8;
+    }
+
+    .sub-division .pale-cyan {
+        background-color: #cffffe;
+    }
+
+    .sub-division .pale-pink {
+        background-color: #ffe4e4;
+    }
+
+    .sub-division .pale-pale {
+        background-color: #f4eeff;
+    }
+
+    .sub-division .pale-green {
+        background-color: #a0ffe6;
+    }
+
+    .sub-division .pale-pista {
+        background-color: #dbf6e9;
+    }
+
     #tender-table td a {
         padding: 10px 15px;
     }
@@ -213,6 +303,139 @@ $file_location_tm = $uploadPath;
                 </div>
             </div>
         </div>
+</section>
+<section class="sub-division container-fluid bg-light">
+    <div class="container bg-light rounded">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 my-lg-0 my-3">
+                <div class="box bg-white">
+                    <div class="d-flex align-items-center">
+                        <div class="rounded-circle mx-3 text-center d-flex align-items-center justify-content-center blue">
+                            <img src="https://5.imimg.com/data5/VP/EL/MY-1180946/question-bank-paper-500x500.jpg" alt="">
+                        </div>
+                        <div class="d-flex flex-column">
+
+                            <a href="about_us/Stall_questionBank_Report.pdf" target="_blank">
+                                <b>LL Question Bank</b>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 my-lg-0 my-3">
+                <div class="box bg-white">
+                    <div class="d-flex align-items-center">
+                        <div class="rounded-circle mx-3  d-flex align-items-center justify-content-center pale-orange">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxJDmUcMyQAZv6YwhHoW8GIJwx8FgOtqvZTQ&usqp=CAU" alt="">
+                        </div>
+                        <div class="d-flex flex-column">
+                            <a href="https://sarathi.parivahan.gov.in/sarathiservice/stateSelection.do" target="_blank">
+                                <b>LL Test Practice</b>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 my-lg-0 my-3">
+                <div class="box bg-white">
+                    <div class="d-flex align-items-center">
+                        <div class="rounded-circle mx-3  d-flex align-items-center justify-content-center pale-purple">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmf7ox8iImKYPqBPNdV0MWT-K6OzySN1SSoA&usqp=CAU" alt="">
+                        </div>
+                        <div class="d-flex flex-column">
+                            <a href="#">
+                                <b>RTI</b>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 my-lg-3 my-3">
+                <div class="box bg-white">
+                    <div class="d-flex align-items-center">
+                        <div class="rounded-circle mx-3  d-flex align-items-center justify-content-center pale-cyan">
+                            <img src="https://w7.pngwing.com/pngs/448/230/png-transparent-bell-notification-communication-icon-announcement-information.png" alt="">
+                        </div>
+                        <div class="d-flex flex-column">
+                            <a href="about_us/Arani_Upgradation.pdf" target="_blank">
+                                <b>Announcement</b>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 my-lg-3 my-3">
+                <div class="box bg-white">
+                    <div class="d-flex align-items-center">
+                        <div class="rounded-circle mx-3  d-flex align-items-center justify-content-center pale-pink">
+                            <img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/insurance-policy-2588024-2159741.png" alt="">
+                        </div>
+                        <div class="d-flex flex-column">
+                            <a href="#">
+                                <b>Policy Note</b>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 my-lg-3 my-3">
+                <div class="box bg-white">
+                    <div class="d-flex align-items-center">
+                        <div class="rounded-circle mx-3  d-flex align-items-center justify-content-center pale-orange">
+                            <img src="https://play-lh.googleusercontent.com/YqOG9GBAB3n9Cw9NbkdlgcV8H1UuxqtotohizT8BjFK8QWVgjSEoEO1Gr-AyJMg5Tw" alt="">
+                        </div>
+                        <div class="d-flex flex-column">
+                            <a href="#">
+                                <b>mParivahan</b>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 my-lg-0 my-3">
+                <div class="box bg-white">
+                    <div class="d-flex align-items-center">
+                        <div class="rounded-circle mx-3  d-flex align-items-center justify-content-center pale-orange">
+                            <img src="https://tnsta.gov.in/images/vahan.jpg" alt="">
+                        </div>
+                        <div class="d-flex flex-column">
+                            <a href="#">
+                                <b>Vahan</b>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 my-lg-0 my-3">
+                <div class="box bg-white">
+                    <div class="d-flex align-items-center">
+                        <div class="rounded-circle mx-3  d-flex align-items-center justify-content-center pale-green">
+                            <img src="https://p.kindpng.com/picc/s/210-2102589_sunvalley-icon-05-car-maintenance-icon-png-transparent.png" alt="">
+                        </div>
+                        <div class="d-flex flex-column">
+                            <a href="#">
+                            <b>Vehicle Status</b>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 my-lg-0 my-3">
+                <div class="box bg-white">
+                    <div class="d-flex align-items-center">
+                        <div class="rounded-circle mx-3  d-flex align-items-center justify-content-center pale-pista">
+                            <img src="https://joblolo.com/wp-content/uploads/2021/04/png-transparent-identity-document-computer-icons-driver-s-license-driving-driving-text-drivers-license.png" alt="">
+                        </div>
+                        <div class="d-flex flex-column">
+                            <a href="#">
+                            <b>License Status</b>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 <?php require APPROOT . '/views/_inc/logo_slide.php';
 ?>

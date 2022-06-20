@@ -27,7 +27,7 @@
 
 
 <script type="text/javascript">
-    $('#pdf_only').on('change', function() {
+    $('.pdf_only').on('change', function() {
         myfile = $(this).val();
         var ext = myfile.split('.').pop();
         if (ext == "pdf") {
@@ -37,7 +37,7 @@
                 icon: 'error',
                 title: 'Accept Only PDF Files',
             })
-            $('#pdf_only').val('');
+            $('.pdf_only').val('');
             return;
         }
     });

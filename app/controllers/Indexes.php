@@ -428,24 +428,45 @@ class Indexes extends Controller
 
   public function contactus_rtooffice()
   {
-
-    $this->view('home/contactus_rtooffice');
+    $data = [
+      'status' => '1',
+      'ch' => '4'
+    ];
+    $Mst_Contactus = $this->mst_contactus_model->getMst_ContactusPublished($data);
+    $data['Mst_Contactus'] = $Mst_Contactus;
+    $this->view('home/contactus_rtooffice',$data);
   }
 
   public function contactus_mvioffice()
   {
-    $this->view('home/contactus_mvioffice');
+    $data = [
+      'status' => '1',
+      'ch' => '5'
+    ];
+    $Mst_Contactus = $this->mst_contactus_model->getMst_ContactusPublished($data);
+    $data['Mst_Contactus'] = $Mst_Contactus;
+    $this->view('home/contactus_mvioffice',$data);
   }
 
   public function contactus_checkpost()
   {
-
-    $this->view('home/contactus_checkpost');
+    $data = [
+      'status' => '1',
+      'ch' => '6'
+    ];
+    $Mst_Contactus = $this->mst_contactus_model->getMst_ContactusPublished($data);
+    $data['Mst_Contactus'] = $Mst_Contactus;
+    $this->view('home/contactus_checkpost',$data);
   }
   public function contactus_staoffice_trans()
   {
-
-    $this->view('home/contactus_staoffice_trans');
+    $data = [
+      'status' => '1',
+      'ch' => '7'
+    ];
+    $Mst_Contactus = $this->mst_contactus_model->getMst_ContactusPublished($data);
+    $data['Mst_Contactus'] = $Mst_Contactus;
+    $this->view('home/contactus_staoffice_trans',$data);
   }
   public function vehicleservices_Learner()
   {

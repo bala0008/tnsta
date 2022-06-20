@@ -1,5 +1,5 @@
 <?php
-class AdminController extends Controller
+Class AdminController extends Controller
 {
   public function __construct()
   {

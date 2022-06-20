@@ -128,7 +128,7 @@ clear: both;
                                     <input type="hidden" name="en_old_pdf" id="en_old_pdf" value="<?php if (isset($data['sql']->whatsnew_id) && ($data['sql']->whatsnew_id) != '') {
                                                                                                         echo $data['sql']->en_wh_new_pdf;
                                                                                                     } ?>">
-                                    <input type="file" class="form-control" name="en_wh_new_pdf" id="en_wh_new_pdf">
+                                    <input type="file" class="form-control pdf_only" name="en_wh_new_pdf" id="en_wh_new_pdf" accept="application/pdf">
 
                                     <br>
                                     <p><?php if (isset($data['sql']->whatsnew_id) && ($data['sql']->whatsnew_id) != '') {
@@ -155,7 +155,7 @@ clear: both;
                                     <input type="hidden" name="tn_old_pdf" id="tn_old_pdf" value="<?php if (isset($data['sql']->whatsnew_id) && ($data['sql']->whatsnew_id) != '') {
                                                                                                         echo $data['sql']->tn_wh_new_pdf;
                                                                                                     } ?>">
-                                    <input type="file" class="form-control" name="tn_wh_new_pdf" id="tn_wh_new_pdf">
+                                    <input type="file" class="form-control pdf_only" name="tn_wh_new_pdf" id="tn_wh_new_pdf" accept="application/pdf">
 
                                     <br>
                                     <p><?php if (isset($data['sql']->whatsnew_id) && ($data['sql']->whatsnew_id) != '') {

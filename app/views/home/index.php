@@ -1,6 +1,7 @@
 <?php require APPROOT . '/views/_inc/header.php'; ?>
 <?php require APPROOT . '/views/_inc/nav.php'; ?>
-<?php //require APPROOT . '/views/_inc/slide.php'; ?>
+<?php //require APPROOT . '/views/_inc/slide.php'; 
+?>
 <?php // require APPROOT . '/views/home/_inc/common_link.php'; 
 ?>
 <base href="<?php echo URLROOT; ?>" />
@@ -16,7 +17,7 @@ $page_contentsql = json_decode(json_encode($data['Mst_Aboutus']), true);
 $profile_name =  $_SESSION['lang'] . "_profile_name";
 $uploadPath = 'profile' . '/' . $page_contentsql['profile_photo'];
 $profile_name =  $_SESSION['lang'] . "_profile_name";
-$profile_position=  $_SESSION['lang'] . "_profile_position";
+$profile_position =  $_SESSION['lang'] . "_profile_position";
 $file_location = $uploadPath;
 $profile_contentsql_tm = json_decode(json_encode($data['Mst_Aboutusmt']), true);
 $profile_name_mt =  $_SESSION['lang'] . "_profile_name";
@@ -71,7 +72,7 @@ $file_location_tm = $uploadPath;
                     <div class="card-header">
                         <ul id="mytab" class="nav nav-tabs nav-tabs-neutral " role="tablist" data-background-color="orange">
                             <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#home1" role="tab">What's New</a>
+                                <a class="nav-link active lang" data-toggle="tab" href="#home1" role="tab" key="lbl_whatsnew">What's New</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#profile1" role="tab">Notification</a>
@@ -201,12 +202,12 @@ $file_location_tm = $uploadPath;
                         <i class="fa fa-inr fa-lg services_button_icon"></i></button>
                 </div>
                 <div class="row">
-                    <button class="button button1_service button1_service_3">
+                    <button class="button button1_service button1_service_3 lang" key="lbl_sarathiepay">
                         SARATHI E-PAYMENT
                         <i class="fa fa-chevron-right fa-lg first_i"></i><i class="fa fa-chevron-right fa-lg second_i"></i></button>
                 </div>
                 <div class="row">
-                    <button class="button button1_service button1_service_4">
+                    <button class="button button1_service button1_service_4 lang" key="lbl_fancynumber">
                         FANCY NUMBER BOOKING
                         <i class="fa fa-list-alt fa-lg services_button_icon"></i></button>
                 </div>

@@ -11,62 +11,58 @@
     }
 </style>
 <section class="mt-4 mb-2">
-    <div class="container pb-2">
-        <div class="row">
-            <div class="col-lg-12">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page"><?php echo "Contact Us - Checkpost"; ?></li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-        <div class="breadcrumb-content pt-2">
-            <h3 style="text-align:center; padding: 15px;">Contact Us - Checkpost</h3>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="message-home col-lg-12">
-                <!-- Tabs with Background on Card -->
-                <!-- Tab panes -->
-                <div class="">
-                    <div class=" table-responsive table-bordered">
-                        <table id="contact_table" class="display table-bordered" style="width:100%;padding: 15px 0px;">
-                            <thead>
-                                <tr>
-                                    <th>S.No</th>
-                                    <th>Name Of The Checkpost</th>
-                                    <th>Address</th>
-                                    <th>Phone Number</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                $i = 1;
-                                foreach ($data['current_contactus_checkpost'] as $sn => $v_contactus_home) {
 
-                                ?>
-                                    <tr>
-                                        <td><?php echo $i; ?></td>
+    <?php
+    // echo"<Pre>";
+    // print_r($data['Mst_Contactus']);
+    // die;
 
-                                        <td><?php $name_lang =  $_SESSION['lang'] . "_officename";
-                                            echo $v_contactus_home[$name_lang];  ?></td>
-                                        <td><?php $address_lang =  $_SESSION['lang'] . "_officeaddress";
-                                            echo $v_contactus_home[$address_lang];  ?></td>
-                                        <td><?php echo $v_contactus_home['phone_no'];  ?></td>
-                                    </tr>
-                                <?php $i++;
-                                } ?>
-                            </tbody>
-                        </table>
+
+    $page_contentsql = json_decode(json_encode($data['Mst_Contactus']), true);
+    if ($page_contentsql) {
+        $title_lang =  $_SESSION['lang'] . "_title";
+        $title = $page_contentsql[$title_lang];
+        $title_lang1 = substr($title, 13);
+        $pdf_lang =  $_SESSION['lang'] . "_pdf";
+        $uploadPath = 'contactus' . '/' . $page_contentsql[$pdf_lang];
+        $file_location = $uploadPath;
+        if ($uploadPath == 'contactus/') {
+            include('contactus_error.php');
+        } else {
+    ?>
+            <div class="container pb-2">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page"><?php echo "Checkpost"; ?></li>
+                            </ol>
+                        </nav>
                     </div>
                 </div>
+                <div class="breadcrumb-content pt-2">
+                    <h3 style="text-align:center; padding: 15px;"><?php echo $page_contentsql[$title_lang]; ?></h3>
+                </div>
             </div>
-            <!-- End Tabs on plain Card -->
-        </div>
-    </div>
+            <div class="container" style="padding-bottom: 5em">
+                <div class="row">
+                    <div class="message-home col-lg-12">
+                        <!-- Tabs with Background on Card -->
+                        <!-- Tab panes -->
+
+                        <object data="<?php echo $file_location; ?>" width="90%" height="500px">
+                            <?php echo $file_location; ?>
+                        </object>
+
+                    </div>
+                    <!-- End Tabs on plain Card -->
+                </div>
+            </div>
+    <?php }
+    } else {
+        include('contactus_error.php');
+    }?>
 </section>
 <?php require APPROOT . '/views/_inc/logo_slide.php';
 ?>
@@ -76,8 +72,8 @@
 <script>
     $(document).ready(function() {
         $('#contact_table').DataTable({
-            "pageLength": 5,
-            "lengthMenu": [5, 10, 15],
+            "pageLength": 4,
+            "lengthMenu": [4, 8, 12],
             autoFill: true
         });
     });

@@ -128,7 +128,7 @@ clear: both;
                                     <input type="hidden" name="en_old_pdf" id="en_old_pdf" value="<?php if (isset($data['sql']->tender_id) && ($data['sql']->tender_id) != '') {
                                                                                                         echo $data['sql']->en_tender_pdf;
                                                                                                     } ?>">
-                                    <input type="file" class="form-control" name="en_tender_pdf" id="en_tender_pdf">
+                                    <input type="file" class="form-control pdf_only" name="en_tender_pdf"  id="en_tender_pdf" accept="application/pdf">
 
                                     <br>
                                     <p><?php if (isset($data['sql']->tender_id) && ($data['sql']->tender_id) != '') {
@@ -155,7 +155,7 @@ clear: both;
                                     <input type="hidden" name="tn_old_pdf" id="tn_old_pdf" value="<?php if (isset($data['sql']->tender_id) && ($data['sql']->tender_id) != '') {
                                                                                                         echo $data['sql']->tn_tender_pdf;
                                                                                                     } ?>">
-                                    <input type="file" class="form-control" name="tn_tender_pdf" id="tn_tender_pdf">
+                                    <input type="file" class="form-control pdf_only" name="tn_tender_pdf" id="tn_tender_pdf" accept="application/pdf">
 
                                     <br>
                                     <p><?php if (isset($data['sql']->tender_id) && ($data['sql']->tender_id) != '') {

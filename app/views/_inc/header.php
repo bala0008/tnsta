@@ -173,7 +173,7 @@ $_SESSION['lang'] = $lang;
                                     <div class="logo-text">
                                         <!-- <h1> Government of India  </h1> -->
                                         <h2 class="lang" key="top_title"> Commissionerate of Transport and Road Safety </h2>
-                                        <h3> Government of Tamil Nadu</h3>
+                                        <h3 class="lang" key="top_sub_title"> Government of Tamil Nadu</h3>
                                     </div>
                                 </div>
                             </a>
